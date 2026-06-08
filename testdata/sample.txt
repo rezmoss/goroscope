@@ -1,0 +1,125 @@
+goroutine 52 [running]:
+runtime/pprof.writeGoroutineStacks({0x104c36fb8, 0xfd042d5a960})
+	/usr/local/go/src/runtime/pprof/pprof.go:819 +0x6c
+runtime/pprof.writeGoroutine({0x104c36fb8?, 0xfd042d5a960?}, 0xfd042d76580?)
+	/usr/local/go/src/runtime/pprof/pprof.go:782 +0x2c
+runtime/pprof.(*Profile).WriteTo(0x104c8b850?, {0x104c36fb8?, 0xfd042d5a960?}, 0xc?)
+	/usr/local/go/src/runtime/pprof/pprof.go:408 +0x144
+net/http/pprof.handler.ServeHTTP({0xfd042cb84c1, 0x9}, {0x104c39490, 0xfd042d5a960}, 0xfd042c9a500)
+	/usr/local/go/src/net/http/pprof/pprof.go:273 +0x414
+net/http/pprof.Index({0x104c39490, 0xfd042d5a960}, 0xfd042c9a500)
+	/usr/local/go/src/net/http/pprof/pprof.go:397 +0xa4
+net/http.HandlerFunc.ServeHTTP(0x104c98800?, {0x104c39490?, 0xfd042d5a960?}, 0x1048e15f8?)
+	/usr/local/go/src/net/http/server.go:2286 +0x38
+net/http.(*ServeMux).ServeHTTP(0x0?, {0x104c39490, 0xfd042d5a960}, 0xfd042c9a500)
+	/usr/local/go/src/net/http/server.go:2828 +0x190
+net/http.serverHandler.ServeHTTP({0xfd042d204c0?}, {0x104c39490?, 0xfd042d5a960?}, 0x1?)
+	/usr/local/go/src/net/http/server.go:3311 +0xb0
+net/http.(*conn).serve(0xfd042d525a0, {0x104c39bd0, 0xfd042d31380})
+	/usr/local/go/src/net/http/server.go:2073 +0x51c
+created by net/http.(*Server).Serve in goroutine 8
+	/usr/local/go/src/net/http/server.go:3464 +0x37c
+
+goroutine 1 [IO wait]:
+internal/poll.runtime_pollWait(0x106eb4400, 0x72)
+	/usr/local/go/src/runtime/netpoll.go:351 +0xa0
+internal/poll.(*pollDesc).wait(0xfd042daa000?, 0x1047c3efc?, 0x0)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:84 +0x28
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Accept(0xfd042daa000)
+	/usr/local/go/src/internal/poll/fd_unix.go:613 +0x214
+net.(*netFD).accept(0xfd042daa000)
+	/usr/local/go/src/net/fd_unix.go:150 +0x28
+net.(*TCPListener).accept(0xfd042da8040)
+	/usr/local/go/src/net/tcpsock_posix.go:159 +0x24
+net.(*TCPListener).Accept(0xfd042da8040)
+	/usr/local/go/src/net/tcpsock.go:387 +0x2c
+net/http.(*Server).Serve(0xfd042d6a000, {0x104c395f0, 0xfd042da8040})
+	/usr/local/go/src/net/http/server.go:3434 +0x244
+net/http.(*Server).ListenAndServe(0xfd042d6a000)
+	/usr/local/go/src/net/http/server.go:3360 +0x80
+net/http.ListenAndServe(...)
+	/usr/local/go/src/net/http/server.go:3675
+main.main()
+	/app/examples/leaky-server/main.go:56 +0x150
+
+goroutine 8 [IO wait]:
+internal/poll.runtime_pollWait(0x106eb4600, 0x72)
+	/usr/local/go/src/runtime/netpoll.go:351 +0xa0
+internal/poll.(*pollDesc).wait(0xfd042d54100?, 0x1047c3efc?, 0x0)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:84 +0x28
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Accept(0xfd042d54100)
+	/usr/local/go/src/internal/poll/fd_unix.go:613 +0x214
+net.(*netFD).accept(0xfd042d54100)
+	/usr/local/go/src/net/fd_unix.go:150 +0x28
+net.(*TCPListener).accept(0xfd042d20280)
+	/usr/local/go/src/net/tcpsock_posix.go:159 +0x24
+net.(*TCPListener).Accept(0xfd042d20280)
+	/usr/local/go/src/net/tcpsock.go:387 +0x2c
+net/http.(*Server).Serve(0xfd042d9e000, {0x104c395f0, 0xfd042d20280})
+	/usr/local/go/src/net/http/server.go:3434 +0x244
+net/http.(*Server).ListenAndServe(0xfd042d9e000)
+	/usr/local/go/src/net/http/server.go:3360 +0x80
+net/http.ListenAndServe(...)
+	/usr/local/go/src/net/http/server.go:3675
+main.main.func3()
+	/app/examples/leaky-server/main.go:52 +0x90
+created by main.main in goroutine 1
+	/app/examples/leaky-server/main.go:50 +0xb8
+
+goroutine 13 [chan receive]:
+main.leak(...)
+	/app/examples/leaky-server/main.go:23
+created by main.main.func1 in goroutine 11
+	/app/examples/leaky-server/main.go:39 +0x58
+
+goroutine 16 [chan receive]:
+main.leak(...)
+	/app/examples/leaky-server/main.go:23
+created by main.main.func1 in goroutine 14
+	/app/examples/leaky-server/main.go:39 +0x58
+
+goroutine 19 [chan receive]:
+main.leak(...)
+	/app/examples/leaky-server/main.go:23
+created by main.main.func1 in goroutine 17
+	/app/examples/leaky-server/main.go:39 +0x58
+
+goroutine 22 [chan receive]:
+main.leak(...)
+	/app/examples/leaky-server/main.go:23
+created by main.main.func1 in goroutine 20
+	/app/examples/leaky-server/main.go:39 +0x58
+
+goroutine 35 [chan receive]:
+main.leak(...)
+	/app/examples/leaky-server/main.go:23
+created by main.main.func1 in goroutine 33
+	/app/examples/leaky-server/main.go:39 +0x58
+
+goroutine 51 [chan receive]:
+main.leak(...)
+	/app/examples/leaky-server/main.go:23
+created by main.main.func1 in goroutine 49
+	/app/examples/leaky-server/main.go:39 +0x58
+
+goroutine 53 [IO wait]:
+internal/poll.runtime_pollWait(0x106eb4200, 0x72)
+	/usr/local/go/src/runtime/netpoll.go:351 +0xa0
+internal/poll.(*pollDesc).wait(0xfd042d54300?, 0xfd042d204e1?, 0x0)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:84 +0x28
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:89
+internal/poll.(*FD).Read(0xfd042d54300, {0xfd042d204e1, 0x1, 0x1})
+	/usr/local/go/src/internal/poll/fd_unix.go:165 +0x234
+net.(*netFD).Read(0xfd042d54300, {0xfd042d204e1?, 0x0?, 0x0?})
+	/usr/local/go/src/net/fd_posix.go:68 +0x28
+net.(*conn).Read(0xfd042c9c118, {0xfd042d204e1?, 0x0?, 0x0?})
+	/usr/local/go/src/net/net.go:196 +0x34
+net/http.(*connReader).backgroundRead(0xfd042d204c0)
+	/usr/local/go/src/net/http/server.go:702 +0x38
+created by net/http.(*connReader).startBackgroundRead in goroutine 52
+	/usr/local/go/src/net/http/server.go:698 +0xb8
